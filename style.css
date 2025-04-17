@@ -10,12 +10,12 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif; /* Fonte mais clássica/romântica */
     margin: 0 auto;
     padding: 20px;
-    background-color: var(--color5);
+    /* background-color: var(--color5); */ /* Removido para usar gradiente */
     color: var(--color2);
-    line-height: 1.6; /* Melhorar legibilidade */
-    background-image: url('background.png'); /* Adicione uma textura sutil */
-    background-attachment: fixed;
+    line-height: 1.6;    /* background: linear-gradient(to bottom, var(--color5), #FFFFFF); */ /* Gradiente anterior */
+    background: linear-gradient(to bottom, var(--color5), #a0d9d1); /* Novo gradiente mais perceptível */
     max-width: 1200px;
+    min-height: 100vh; /* Garante que o gradiente cubra a tela toda */
 }
 
 header {
@@ -24,6 +24,7 @@ header {
     border-bottom: 1px solid var(--color3); /* Linha sutil com cor de destaque */
     margin-bottom: 30px;
     position: relative;
+    /* Mover a navegação para cá se desejado */
 }
 
 header:after {
@@ -94,31 +95,40 @@ nav ul {
     padding: 0;
 }
 
-#navegacao nav ul {
-    text-align: center; /* Centralizar links de navegação */
+header nav {
+    margin-top: 15px; /* Espaço entre título e nav */
 }
 
-nav ul li {
+header nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+header nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin: 0 15px;
 }
 
-#navegacao nav ul li {
-    margin: 0 15px; /* Aumentar espaçamento entre links */
-}
-
-#navegacao nav ul li a {
+header nav ul li a {
     text-decoration: none;
+    color: var(--color3);
     font-size: 1.1rem;
     padding: 8px 15px;
     border-radius: 20px;
     transition: all 0.3s ease;
 }
 
-#navegacao nav ul li a:hover {
+header nav ul li a:hover {
     background-color: var(--color1);
     color: white;
 }
+
+/* Remover estilos antigos da navegação que estava no main */
+/* #navegacao nav ul { ... } */ /* Remover ou comentar */
+/* #navegacao nav ul li { ... } */ /* Remover ou comentar */
+/* #navegacao nav ul li a { ... } */ /* Remover ou comentar */
+/* #navegacao nav ul li a:hover { ... } */ /* Remover ou comentar */
 
 a {
     color: var(--color3);

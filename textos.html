@@ -6,37 +6,145 @@
     <title>Textos - Patricia Parra</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css">
+    <!-- Adiciona a biblioteca marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Estilo básico para o botão voltar */
+        #back-button {
+            display: none; /* Escondido por padrão */
+            margin-bottom: 20px;
+            cursor: pointer;
+            color: var(--color3);
+            text-decoration: underline;
+        }
+        #post-content article {
+             margin: 40px 0;
+            padding: 20px;
+            border-left: 3px solid var(--color3);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 0 10px 10px 0;
+        }
+         #post-content article h1, #post-content article h2, #post-content article h3 {
+             color: var(--color1);
+             margin-top: 0;
+             font-size: 1.6rem; /* Reutiliza estilo .texto h2 */
+             font-family: 'Lucida Calligraphy', 'Brush Script MT', cursive; /* Reutiliza estilo h2 */
+         }
+    </style>
 </head>
 <body>
     <header>
         <h1>Meus Textos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section id="conteudo">
-            <p>Aqui estão alguns dos meus contos e poemas.</p>
-            
-            <!-- Exemplo de como adicionar um texto -->
-            <article class="texto">
-                <h2>Título do Texto</h2>
-                <p class="tipo">Conto</p>
-                <p>Texto completo ou um trecho aqui...</p>
-            </article>
-            
-            <!-- Você pode duplicar a estrutura acima para cada texto -->
+            <!-- Botão para voltar para a lista -->
+            <div id="back-button">&larr; Voltar para a lista</div>
+
+            <!-- Área onde a lista de posts será carregada -->
+            <div id="post-list">
+                <p>Carregando textos...</p>
+            </div>
+
+            <!-- Área onde o conteúdo do post selecionado será carregado -->
+            <div id="post-content"></div>
+
         </section>
 
-        <section id="navegacao">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Página Inicial</a></li>
-                </ul>
-            </nav>
-        </section>
+        <!-- Navegação movida para o header, seção removida -->
+
     </main>
 
     <footer>
         <p>&copy; 2024 Patricia Parra. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        const postListDiv = document.getElementById('post-list');
+        const postContentDiv = document.getElementById('post-content');
+        const backButton = document.getElementById('back-button');
+
+        // --- Lista de Posts --- 
+        // Adicione seus posts aqui. O 'file' é o caminho para o arquivo .md
+        const posts = [
+            { title: "Exemplo de Conto", file: "posts/exemplo-conto.md", type: "Conto" },
+            // { title: "Outro Poema", file: "posts/outro-poema.md", type: "Poema" },
+            // Adicione mais posts aqui
+        ];
+
+        // Função para mostrar a lista de posts e esconder o conteúdo individual
+        function showPostList() {
+            postContentDiv.innerHTML = ''; // Limpa conteúdo do post
+            postContentDiv.style.display = 'none';
+            backButton.style.display = 'none';
+            postListDiv.style.display = 'block';
+        }
+
+        // Função para carregar e exibir um post específico
+        async function loadPost(mdFile) {
+            try {
+                const response = await fetch(mdFile);
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar ${mdFile}: ${response.statusText}`);
+                }
+                const markdown = await response.text();
+                const htmlContent = marked.parse(markdown); // Converte Markdown para HTML
+                
+                // Encontra o post correspondente para obter o título e tipo
+                const postData = posts.find(p => p.file === mdFile);
+                const title = postData ? postData.title : 'Título não encontrado';
+                const type = postData ? postData.type : '';
+
+                // Cria a estrutura do artigo similar ao .texto original
+                postContentDiv.innerHTML = `
+                    <article class="texto">
+                        <h2>${title}</h2>
+                        ${type ? `<p class="tipo">${type}</p>` : ''}
+                        ${htmlContent}
+                    </article>
+                `;
+                postListDiv.style.display = 'none'; // Esconde a lista
+                postContentDiv.style.display = 'block'; // Mostra o conteúdo
+                backButton.style.display = 'block'; // Mostra o botão voltar
+            } catch (error) {
+                console.error('Erro:', error);
+                postContentDiv.innerHTML = `<p>Não foi possível carregar o texto. Tente novamente mais tarde.</p>`;
+                postListDiv.style.display = 'none';
+                postContentDiv.style.display = 'block';
+                backButton.style.display = 'block';
+            }
+        }
+
+        // Função para gerar a lista de links dos posts
+        function renderPostList() {
+            if (posts.length === 0) {
+                postListDiv.innerHTML = '<p>Nenhum texto publicado ainda.</p>';
+                return;
+            }
+
+            let listHtml = '<ul>';
+            posts.forEach(post => {
+                // Adiciona um link que chama loadPost quando clicado
+                listHtml += `<li><a href="#" onclick="loadPost('${post.file}'); return false;">${post.title} (${post.type})</a></li>`;
+            });
+            listHtml += '</ul>';
+            postListDiv.innerHTML = listHtml;
+        }
+
+        // Event listener para o botão voltar
+        backButton.addEventListener('click', showPostList);
+
+        // Inicialização: Renderiza a lista de posts quando a página carrega
+        renderPostList();
+        showPostList(); // Garante que a lista seja exibida inicialmente
+
+    </script>
+
 </body>
 </html>
