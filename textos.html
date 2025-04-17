@@ -1,206 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Textos - Pachi Parra</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Explore os contos e poemas de Pachi Parra. Textos que navegam por sentimentos, ideias e histórias.">
+    <meta
+      name="description"
+      content="Explore os contos e poemas de Pachi Parra. Textos que navegam por sentimentos, ideias e histórias."
+    />
 
     <!-- Open Graph / Facebook Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="/textos.html"> <!-- Substituir pela URL absoluta -->
-    <meta property="og:title" content="Textos - Pachi Parra">
-    <meta property="og:description" content="Explore os contos e poemas de Pachi Parra. Textos que navegam por sentimentos, ideias e histórias.">
-    <meta property="og:image" content="/pachi-parra.jpg"> <!-- Substituir pela URL absoluta da imagem -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/textos.html" />
+    <!-- Substituir pela URL absoluta -->
+    <meta property="og:title" content="Textos - Pachi Parra" />
+    <meta
+      property="og:description"
+      content="Explore os contos e poemas de Pachi Parra. Textos que navegam por sentimentos, ideias e histórias."
+    />
+    <meta property="og:image" content="/pachi-parra.jpg" />
+    <!-- Substituir pela URL absoluta da imagem -->
 
     <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="/textos.html"> <!-- Substituir pela URL absoluta -->
-    <meta name="twitter:title" content="Textos - Pachi Parra">
-    <meta name="twitter:description" content="Explore os contos e poemas de Pachi Parra. Textos que navegam por sentimentos, ideias e histórias.">
-    <meta name="twitter:image" content="/pachi-parra.jpg"> <!-- Substituir pela URL absoluta da imagem -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="/textos.html" />
+    <!-- Substituir pela URL absoluta -->
+    <meta name="twitter:title" content="Textos - Pachi Parra" />
+    <meta
+      name="twitter:description"
+      content="Explore os contos e poemas de Pachi Parra. Textos que navegam por sentimentos, ideias e histórias."
+    />
+    <meta name="twitter:image" content="/pachi-parra.jpg" />
+    <!-- Substituir pela URL absoluta da imagem -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
     <!-- Adiciona a biblioteca marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Tag <style> removida, estilos movidos para style.css -->
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-            <div class="logo">
-                 <h1><a href="index.html" style="text-decoration: none; color: inherit;">Pachi Parra</a></h1> <!-- Texto e link do logo corrigidos -->
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="sobre.html">Sobre Mim</a></li> <!-- Link atualizado -->
-                   <li><a href="textos.html">Textos</a></li>
-                    <li><a href="mailto:pahparra@gmail.com">Email</a></li>
-                </ul>
-            </nav>
+      <div class="header-content">
+        <div class="logo">
+          <h1>
+            <a href="index.html" style="text-decoration: none; color: inherit"
+              >Pachi Parra</a
+            >
+          </h1>
+          <!-- Texto e link do logo corrigidos -->
         </div>
+        <nav>
+          <ul>
+            <li><a href="sobre.html">Sobre Mim</a></li>
+            <!-- Link atualizado -->
+            <li><a href="textos.html">Textos</a></li>
+            <li><a href="mailto:pahparra@gmail.com">Email</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <section id="conteudo" class="container"> <!-- Adiciona classe container para limitar largura -->
-            <!-- Botão para voltar para a lista -->
-            <div id="back-button">&larr; Voltar para a lista</div>
+      <section id="conteudo" class="container">
+        <!-- Adiciona classe container para limitar largura -->
 
-            <!-- Botões de Filtro -->
-            <div id="filter-buttons"> <!-- Remove estilo inline -->
-                <span>Filtrar por:</span>
-                <button onclick="filterPosts('todos')" class="active">Todos</button>
-                <button onclick="filterPosts('conto')">Contos</button>
-                <button onclick="filterPosts('poema')">Poemas</button>
-                 <!-- Adicione mais botões para outras tags se necessário -->
-            </div>
+        <!-- Botão para voltar para a lista -->
+        <div id="back-button">&larr; Voltar para a lista</div>
 
-            <!-- Área onde a lista de posts será carregada -->
-            <div id="post-list">
+        <!-- Botões de Filtro -->
+        <div id="filter-buttons">
+          <!-- Remove estilo inline -->
+          <span>Filtrar por:</span>
+          <button onclick="filterPosts('todos')" class="active">Todos</button>
+          <button onclick="filterPosts('conto')">Contos</button>
+          <button onclick="filterPosts('poema')">Poemas</button>
+          <!-- Adicione mais botões para outras tags se necessário -->
+        </div>
+
+        <!-- Área onde a lista de posts será carregada -->
+        <section id="post-list">
+          <h2>Textos</h2>
+            <div id="post-list-container">
                 <p>Carregando textos...</p>
             </div>
-
-            <!-- Área onde o conteúdo do post selecionado será carregado -->
-            <div id="post-content"></div>
-
+          </section>
         </section>
 
-        <!-- Navegação movida para o header, seção removida -->
+        <!-- Área onde o conteúdo do post selecionado será carregado -->
+        <div id="post-content"></div>
+      </section>
 
+      <!-- Navegação movida para o header, seção removida -->
     </main>
 
     <footer>
-        <p>&copy; 2025 Pachi Parra. Todos os direitos reservados.</p> <!-- Atualiza ano -->
+      <p>&copy; 2025 Pachi Parra. Todos os direitos reservados.</p>
+      <!-- Atualiza ano -->
     </footer>
 
-    <script>
-        const postListDiv = document.getElementById('post-list');
-        const postContentDiv = document.getElementById('post-content');
-        const backButton = document.getElementById('back-button');
-        const filterButtonsContainer = document.getElementById('filter-buttons');
-
-        let currentFilter = 'todos';
-        let allPosts = []; // Variável para armazenar todos os posts carregados do JSON
-
-        // --- Lista de Posts --- REMOVIDA
-        // A lista agora será carregada do posts.json
-
-        // Função para buscar os posts do JSON
-        async function fetchPosts() {
-            try {
-                const response = await fetch('posts.json'); // Busca o arquivo JSON
-                if (!response.ok) {
-                    throw new Error(`Erro ao carregar posts.json: ${response.statusText}`);
-                }
-                allPosts = await response.json(); // Armazena os posts na variável global
-                renderPostList(); // Renderiza a lista inicial após carregar os posts
-                showPostList(); // Garante que a lista seja exibida
-            } catch (error) {
-                console.error('Erro ao buscar posts:', error);
-                postListDiv.innerHTML = '<p>Erro ao carregar a lista de textos.</p>';
-            }
-        }
-
-        // Função para mostrar a lista de posts e esconder o conteúdo individual
-        function showPostList() {
-            postContentDiv.innerHTML = '';
-            postContentDiv.style.display = 'none';
-            backButton.style.display = 'none';
-            postListDiv.style.display = 'block';
-            filterButtonsContainer.style.display = 'block'; // Mostra os botões de filtro
-        }
-
-        // Função para carregar e exibir um post específico
-        async function loadPost(mdFile) {
-            try {
-                const response = await fetch(mdFile);
-                if (!response.ok) {
-                    throw new Error(`Erro ao carregar ${mdFile}: ${response.statusText}`);
-                }
-                const markdownWithFrontMatter = await response.text();
-
-                // ... (lógica de remoção do front matter e conversão para HTML permanece a mesma)
-                const contentStartIndex = markdownWithFrontMatter.indexOf('\n---', 4);
-                const markdown = contentStartIndex > 0 ? markdownWithFrontMatter.substring(contentStartIndex + 4) : markdownWithFrontMatter;
-                const htmlContent = marked.parse(markdown);
-
-                // Encontra o post correspondente em allPosts para obter o título
-                const postData = allPosts.find(p => p.file === mdFile);
-                const title = postData ? postData.title : 'Título não encontrado';
-
-                postContentDiv.innerHTML = `
-                    <article>
-                        <h2>${title}</h2>
-                        ${htmlContent}
-                    </article>
-                `;
-                postListDiv.style.display = 'none';
-                postContentDiv.style.display = 'block';
-                backButton.style.display = 'block';
-                filterButtonsContainer.style.display = 'none'; // Esconde os botões de filtro ao ver um post
-            } catch (error) {
-                console.error('Erro:', error);
-                postContentDiv.innerHTML = `<p>Não foi possível carregar o texto. Tente novamente mais tarde.</p>`;
-                postListDiv.style.display = 'none';
-                postContentDiv.style.display = 'block';
-                backButton.style.display = 'block';
-                filterButtonsContainer.style.display = 'none'; // Esconde os botões de filtro em caso de erro
-            }
-        }
-
-        // Função para gerar a lista de links dos posts, filtrada pela tag
-        function renderPostList() {
-            // Usa allPosts em vez da variável local 'posts'
-            const filteredPosts = allPosts.filter(post =>
-                currentFilter === 'todos' || (post.tags && post.tags.includes(currentFilter))
-            );
-
-            if (filteredPosts.length === 0 && allPosts.length > 0) { // Verifica se allPosts já foi carregado
-                postListDiv.innerHTML = `<p>Nenhum texto encontrado para a tag "${currentFilter}".</p>`;
-                return;
-            } else if (allPosts.length === 0) {
-                 postListDiv.innerHTML = `<p>Carregando textos...</p>`; // Mensagem enquanto carrega
-                 return;
-            }
-
-            let listHtml = '<ul>';
-            filteredPosts.forEach(post => {
-                listHtml += `<li><a href="#" onclick="loadPost('${post.file}'); return false;">${post.title}</a></li>`;
-            });
-            listHtml += '</ul>';
-            postListDiv.innerHTML = listHtml;
-
-            // ... (lógica para atualizar a classe 'active' nos botões permanece a mesma)
-            const buttons = filterButtonsContainer.querySelectorAll('button');
-            buttons.forEach(button => {
-                const buttonTag = button.textContent.toLowerCase().replace('s', ''); // Simplifica a comparação (Contos -> conto)
-                 if (buttonTag === 'todo') buttonTag = 'todos'; // Ajuste para 'Todos'
-
-                if (buttonTag === currentFilter) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
-        }
-
-        // Função chamada pelos botões de filtro
-        function filterPosts(tag) {
-            currentFilter = tag;
-            renderPostList();
-            showPostList();
-        }
-
-        // Event listener para o botão voltar
-        backButton.addEventListener('click', showPostList);
-
-        // Inicialização: Busca os posts do JSON ao carregar a página
-        fetchPosts(); // Chama a nova função para buscar os dados
-
-    </script>
-
-</body>
+    <script src="textos.js" defer></script> <!-- Referencia o script externo -->
+  </body>
 </html>
