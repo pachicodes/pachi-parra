@@ -30,6 +30,19 @@
              font-size: 1.6rem; /* Reutiliza estilo .texto h2 */
              font-family: 'Lucida Calligraphy', 'Brush Script MT', cursive; /* Reutiliza estilo h2 */
          }
+        /* Estilo para os botões de filtro */
+        #filter-buttons button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: var(--color2);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #filter-buttons button.active {
+            background-color: var(--color1);
+        }
     </style>
 </head>
 <body>
@@ -46,6 +59,15 @@
         <section id="conteudo">
             <!-- Botão para voltar para a lista -->
             <div id="back-button">&larr; Voltar para a lista</div>
+
+            <!-- Botões de Filtro -->
+            <div id="filter-buttons" style="margin-bottom: 20px;">
+                <span>Filtrar por:</span>
+                <button onclick="filterPosts('todos')" class="active">Todos</button>
+                <button onclick="filterPosts('conto')">Contos</button>
+                <button onclick="filterPosts('poema')">Poemas</button>
+                 <!-- Adicione mais botões para outras tags se necessário -->
+            </div>
 
             <!-- Área onde a lista de posts será carregada -->
             <div id="post-list">
@@ -69,12 +91,16 @@
         const postListDiv = document.getElementById('post-list');
         const postContentDiv = document.getElementById('post-content');
         const backButton = document.getElementById('back-button');
+        const filterButtonsContainer = document.getElementById('filter-buttons'); // Pega o container dos botões
 
-        // --- Lista de Posts --- 
+        let currentFilter = 'todos'; // Filtro inicial
+
+        // --- Lista de Posts ---
         // Adicione seus posts aqui. O 'file' é o caminho para o arquivo .md
+        // Use 'tags' como um array de strings
         const posts = [
-            { title: "Exemplo de Conto", file: "posts/exemplo-conto.md", type: "Conto" },
-            // { title: "Outro Poema", file: "posts/outro-poema.md", type: "Poema" },
+            { title: "Exemplo de Conto", file: "posts/exemplo-conto.md", tags: ["conto"] },
+            // { title: "Exemplo de Poema", file: "posts/exemplo-poema.md", tags: ["poema"] },
             // Adicione mais posts aqui
         ];
 
@@ -93,19 +119,23 @@
                 if (!response.ok) {
                     throw new Error(`Erro ao carregar ${mdFile}: ${response.statusText}`);
                 }
-                const markdown = await response.text();
+                const markdownWithFrontMatter = await response.text();
+
+                // Simples remoção do front matter (assume que termina com ---)
+                const contentStartIndex = markdownWithFrontMatter.indexOf('\n---', 4); // Procura o segundo '---'
+                const markdown = contentStartIndex > 0 ? markdownWithFrontMatter.substring(contentStartIndex + 4) : markdownWithFrontMatter;
+
                 const htmlContent = marked.parse(markdown); // Converte Markdown para HTML
-                
-                // Encontra o post correspondente para obter o título e tipo
+
+                // Encontra o post correspondente para obter o título
                 const postData = posts.find(p => p.file === mdFile);
                 const title = postData ? postData.title : 'Título não encontrado';
-                const type = postData ? postData.type : '';
+                // const type = postData ? postData.type : ''; // Não precisamos mais do type aqui
 
                 // Cria a estrutura do artigo similar ao .texto original
                 postContentDiv.innerHTML = `
                     <article class="texto">
                         <h2>${title}</h2>
-                        ${type ? `<p class="tipo">${type}</p>` : ''}
                         ${htmlContent}
                     </article>
                 `;
@@ -121,27 +151,49 @@
             }
         }
 
-        // Função para gerar a lista de links dos posts
+        // Função para gerar a lista de links dos posts, filtrada pela tag
         function renderPostList() {
-            if (posts.length === 0) {
-                postListDiv.innerHTML = '<p>Nenhum texto publicado ainda.</p>';
+            const filteredPosts = posts.filter(post =>
+                currentFilter === 'todos' || (post.tags && post.tags.includes(currentFilter))
+            );
+
+            if (filteredPosts.length === 0) {
+                postListDiv.innerHTML = `<p>Nenhum texto encontrado para a tag "${currentFilter}".</p>`;
                 return;
             }
 
             let listHtml = '<ul>';
-            posts.forEach(post => {
+            filteredPosts.forEach(post => {
                 // Adiciona um link que chama loadPost quando clicado
-                listHtml += `<li><a href="#" onclick="loadPost('${post.file}'); return false;">${post.title} (${post.type})</a></li>`;
+                // Removemos a exibição da tag/tipo no link
+                listHtml += `<li><a href="#" onclick="loadPost('${post.file}'); return false;">${post.title}</a></li>`;
             });
             listHtml += '</ul>';
             postListDiv.innerHTML = listHtml;
+
+            // Atualiza a classe 'active' nos botões de filtro
+            const buttons = filterButtonsContainer.querySelectorAll('button');
+            buttons.forEach(button => {
+                if (button.textContent.toLowerCase().includes(currentFilter) || (currentFilter === 'todos' && button.textContent === 'Todos')) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Função chamada pelos botões de filtro
+        function filterPosts(tag) {
+            currentFilter = tag;
+            renderPostList(); // Re-renderiza a lista com o novo filtro
+            showPostList(); // Garante que a lista seja exibida (caso um post estivesse aberto)
         }
 
         // Event listener para o botão voltar
         backButton.addEventListener('click', showPostList);
 
         // Inicialização: Renderiza a lista de posts quando a página carrega
-        renderPostList();
+        renderPostList(); // Renderiza com o filtro inicial 'todos'
         showPostList(); // Garante que a lista seja exibida inicialmente
 
     </script>

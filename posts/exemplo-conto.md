@@ -1,3 +1,7 @@
+---
+tags: [conto]
+---
+
 # Exemplo de Conto
 
 Este é um parágrafo de exemplo para o conto.
