@@ -135,11 +135,12 @@ section {
 }
 
 /* Estilos Sobre */
-#sobre, #post-list {
+#sobre, #post-list{
     background-color: var(--color5);
      max-width: 900px; /* Mais estreito */
      margin: 0 auto 60px auto; /* Centralizar */
      padding: 40px 20px; /* Padding interno */
+     /* display: none; <- Removido */
 }
 
 #sobre h2 {
@@ -211,7 +212,7 @@ header nav ul li a {
 
 header nav ul li a:hover {
     background-color: transparent;
-    color: var(--color1);
+    color: var(--color2);
     border-bottom: 2px solid var(--color3); /* Borda inferior no hover */
 }
 
@@ -318,9 +319,11 @@ footer {
 #post-content article {
     margin: 40px 0;
     padding: 20px;
-    border-left: 3px solid var(--color3);
-    background-color: rgba(255, 255, 255, 0.5);
+    border-left: 3px solid var(--color1);
+    background-color: var(--color5);
     border-radius: 0 10px 10px 0;
+    max-width: 700px;
+    margin: 0 auto; /* Centralizar */
 }
 
 #post-content article h1, 
@@ -363,12 +366,12 @@ footer {
 
 #post-list a {
     text-decoration: none;
-    color: var(--color1);
-    font-weight: bold;
+    color: var(--color2);
 }
 
 #post-list a:hover {
     color: var(--color3);
     text-decoration: underline;
+    font-weight: bold;
 }
 /* Fim dos estilos específicos da página Textos */

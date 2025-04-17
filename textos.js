@@ -1,4 +1,4 @@
-const postListDiv = document.getElementById("post-list-container");
+const postListDiv = document.getElementById("post-list"); // ID corrigido
 const postContentDiv = document.getElementById("post-content");
 const backButton = document.getElementById("back-button");
 const filterButtonsContainer = document.getElementById("filter-buttons");
@@ -122,7 +122,7 @@ function filterPosts(tag) {
   showPostList();
 }
 
-// Event listener para o botão voltar
+// Event listener para o botão voltar (manter apenas um)
 backButton.addEventListener("click", showPostList);
 
 // Inicialização: Busca os posts do JSON ao carregar a página
