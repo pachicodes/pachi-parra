@@ -1,5 +1,4 @@
 [
-  { "title": "Fofoca pela Metade", "file": "posts/fofoca-pela-metade.md", "tags": ["conto"] }
-  // Adicione novos posts aqui, seguindo o formato JSON.
-  // Exemplo: { "title": "Título do Poema", "file": "posts/meu-poema.md", "tags": ["poema"] }
+  { "title": "Fofoca pela Metade", "file": "posts/fofoca-pela-metade.md", "tags": ["conto"] },
+  { "title": "Adicione novos posts aqui, seguindo o formato JSON.", "file": "posts/exemplo.md", "tags": ["exemplo"] }
 ]
