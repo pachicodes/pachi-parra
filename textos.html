@@ -8,60 +8,31 @@
     <link rel="stylesheet" href="style.css">
     <!-- Adiciona a biblioteca marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <style>
-        /* Estilo básico para o botão voltar */
-        #back-button {
-            display: none; /* Escondido por padrão */
-            margin-bottom: 20px;
-            cursor: pointer;
-            color: var(--color3);
-            text-decoration: underline;
-        }
-        #post-content article {
-             margin: 40px 0;
-            padding: 20px;
-            border-left: 3px solid var(--color3);
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 0 10px 10px 0;
-        }
-         #post-content article h1, #post-content article h2, #post-content article h3 {
-             color: var(--color1);
-             margin-top: 0;
-             font-size: 1.6rem; /* Reutiliza estilo .texto h2 */
-             font-family: 'Lucida Calligraphy', 'Brush Script MT', cursive; /* Reutiliza estilo h2 */
-         }
-        /* Estilo para os botões de filtro */
-        #filter-buttons button {
-            margin-right: 10px;
-            padding: 5px 10px;
-            cursor: pointer;
-            background-color: var(--color2);
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        #filter-buttons button.active {
-            background-color: var(--color1);
-        }
-    </style>
+    <!-- Tag <style> removida, estilos movidos para style.css -->
 </head>
 <body>
     <header>
-        <h1>Meus Textos</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Página Inicial</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">Textos</a></h1> <!-- Link para home no logo -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="sobre.html">Sobre Mim</a></li> <!-- Link atualizado -->
+                   <li><a href="textos.html">Textos</a></li>
+                    <li><a href="mailto:pahparra@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="conteudo">
+        <section id="conteudo" class="container"> <!-- Adiciona classe container para limitar largura -->
             <!-- Botão para voltar para a lista -->
             <div id="back-button">&larr; Voltar para a lista</div>
 
             <!-- Botões de Filtro -->
-            <div id="filter-buttons" style="margin-bottom: 20px;">
+            <div id="filter-buttons"> <!-- Remove estilo inline -->
                 <span>Filtrar por:</span>
                 <button onclick="filterPosts('todos')" class="active">Todos</button>
                 <button onclick="filterPosts('conto')">Contos</button>
@@ -84,7 +55,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Pachi Parra. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Pachi Parra. Todos os direitos reservados.</p> <!-- Atualiza ano -->
     </footer>
 
     <script>
@@ -100,6 +71,7 @@
         // Use 'tags' como um array de strings
         const posts = [
             { title: "Exemplo de Conto", file: "posts/exemplo-conto.md", tags: ["conto"] },
+            { title: "Fofoca pela Metade", file: "posts/fofoca-pela-metade.md", tags: ["conto"] }, // Adiciona novo post
             // { title: "Exemplo de Poema", file: "posts/exemplo-poema.md", tags: ["poema"] },
             // Adicione mais posts aqui
         ];
@@ -134,7 +106,7 @@
 
                 // Cria a estrutura do artigo similar ao .texto original
                 postContentDiv.innerHTML = `
-                    <article class="texto">
+                    <article> <!-- Remove a classe texto daqui -->
                         <h2>${title}</h2>
                         ${htmlContent}
                     </article>
@@ -174,7 +146,9 @@
             // Atualiza a classe 'active' nos botões de filtro
             const buttons = filterButtonsContainer.querySelectorAll('button');
             buttons.forEach(button => {
-                if (button.textContent.toLowerCase().includes(currentFilter) || (currentFilter === 'todos' && button.textContent === 'Todos')) {
+                // Ajusta a lógica para comparar o texto do botão com o filtro
+                const buttonTag = button.textContent.toLowerCase();
+                if (buttonTag === currentFilter || (currentFilter === 'todos' && buttonTag === 'todos')) {
                     button.classList.add('active');
                 } else {
                     button.classList.remove('active');
