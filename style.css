@@ -57,6 +57,7 @@ header {
     text-shadow: none; /* Remover sombra */
 }
 
+
 h2, h3 {
     font-family: var(--font-serif); /* Usar serif para outros títulos também */
     color: var(--color1);
@@ -257,6 +258,34 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Adicionar ícone aos títulos das seções */
+section h2::before,
+section h2::after,
+.categoria-item h3::before,
+.categoria-item h3::after {
+    content: '❦';
+    color: var(--color4); /* Mudar cor para Verde limão */
+    margin: 0 0.5em; /* Espaçamento horizontal */
+    font-size: 0.8em; /* Tamanho um pouco menor que o título */
+    vertical-align: middle; /* Alinhar verticalmente */
+}
+
+/* Adicionar ícone aos links Leia Mais */
+.categoria-item a::after {
+    content: ' ❦'; /* Espaço antes do ícone */
+    color: inherit; /* Herda a cor do link */
+    font-size: 0.9em;
+    display: inline-block; /* Para evitar quebras de linha estranhas */
+}
+
+/* Adicionar ícone ao rodapé */
+footer::before {
+    content: '❦ ';
+    color: var(--color4); /* Mudar cor para Verde limão */
+    margin-right: 0.3em;
+    font-size: 1em;
+    vertical-align: middle;
+}
 
 /* Remover estilos antigos não usados */
 /* .texto { ... } */
@@ -364,16 +393,39 @@ footer {
 
 #post-list li {
     margin-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Separador sutil */
+    padding-bottom: 10px; /* Espaçamento abaixo do item */
+    color: var(--color2); /* Definir cor do texto do li */
+    position: relative; /* Necessário para posicionar o ::before */
+    padding-left: 20px; /* Espaço para o ícone */
+}
+
+#post-list li::before {
+    content: '❦'; /* Ícone de coração floral */
+    color: var(--color4); /* Mudar cor para Verde limão */
+    position: absolute;
+    left: 0;
+    top: 0.3em; /* Ajuste vertical (pode precisar de ajuste fino) */
+    font-size: 1em; /* Tamanho do ícone */
+    line-height: 1; /* Para evitar afetar a altura da linha */
+}
+
+#post-list li:last-child {
+    border-bottom: none; /* Remover borda do último item */
 }
 
 #post-list a {
     text-decoration: none;
-    color: var(--color2);
+    color: var(--color1); /* Mudar cor padrão para Bordo */
+    display: block; /* Fazer o link ocupar toda a largura do li */
+    padding: 5px 0; /* Adicionar um pouco de padding vertical */
+    transition: color 0.2s ease, padding-left 0.2s ease; /* Adicionar transição suave */
 }
 
 #post-list a:hover {
-    color: var(--color3); /* Reverte para color3 */
-    text-decoration: underline;
-    font-weight: bold;
+    color: var(--color3); /* Manter cor Verde água no hover */
+    text-decoration: none; /* Remover sublinhado padrão do hover */
+    font-weight: normal; /* Remover bold do hover */
+    padding-left: 8px; /* Leve indentação no hover */
 }
 /* Fim dos estilos específicos da página Textos */
