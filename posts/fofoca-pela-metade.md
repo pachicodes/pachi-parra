@@ -3,6 +3,7 @@ tags: [conto]
 date: 2025-04-05
 ---
 
+# Fofoca pela Metade
 
 — Francisca, você tem certeza de que era o Henrique?
 
@@ -44,8 +45,4 @@ date: 2025-04-05
 
 — Descobriu o quê, mulher?
 
-  
-
 Nesse momento, um carro desce a rua e para na frente deles. Henrique desce do carro, caminha até eles, cumprimenta dona Francisca e seu Leonel e dá um beijo suave na boca de Bete. Sorri, feliz, enquanto procura a mão da namorada.
-
-
