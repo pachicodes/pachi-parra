@@ -58,8 +58,8 @@ async function loadPost(mdFile) {
 
     postContentDiv.innerHTML = `
               <article>
-                  <h2>${title}</h2>
-                  ${htmlContent}
+                  
+                  ${htmlContent} // Remove o H2 duplicado daqui
               </article>
           `;
     postListDiv.style.display = "none";
@@ -99,7 +99,7 @@ function renderPostList() {
     listHtml += `<li><a href="#" onclick="loadPost('${post.file}'); return false;">${post.title}</a></li>`;
   });
   listHtml += "</ul>";
-  postListDiv.innerHTML = listHtml;
+  postListDiv.innerHTML = `<h2>Textos</h2>${listHtml}`;
 
   // ... (lógica para atualizar a classe 'active' nos botões permanece a mesma)
   const buttons = filterButtonsContainer.querySelectorAll("button");

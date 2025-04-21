@@ -3,6 +3,8 @@ tags: [conto]
 date: 2025-04-05
 ---
 
+# Fofoca pela metade
+
 — Francisca, você tem certeza de que era o Henrique?
 
 — Tenho sim, Leonel, não tem outro rapaz com aquele cabelo aqui na cidade.

@@ -1,9 +1,8 @@
 ---
-title: "Liberdade"
 date: 2025-01-29
 tags: [conto, poema]
-description: "Breve descrição do artigo."
 ---
+# Liberdade ou Depressão?
 
 Ela era uma moça normal.
 Nem muito alta, nem muito baixa.

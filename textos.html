@@ -73,29 +73,31 @@
         <!-- Botão para voltar para a lista -->
         <div id="back-button">&larr; Voltar para a lista</div>
 
-        <!-- Botões de Filtro -->
-        <div id="filter-buttons">
-          <!-- Remove estilo inline -->
-          <span>Filtrar por:</span>
-          <button onclick="filterPosts('todos')" class="active">Todos</button>
-          <button onclick="filterPosts('conto')">Contos</button>
-          <button onclick="filterPosts('poema')">Poemas</button>
-          <!-- Adicione mais botões para outras tags se necessário -->
-        </div>
+        <!-- Nova seção para agrupar título, filtros e lista -->
+        <section id="textos-section">
+          <!-- Título removido daqui -->
 
-        <!-- Área onde a lista de posts será carregada -->
-        <section id="post-list">
-          <h2>Textos</h2>
-          <!-- O conteúdo da lista (ou 'Carregando...') será inserido aqui pelo JS -->
-          <p>Carregando textos...</p>
-        </section>
-        <!-- </section> REMOVIDO - fechamento duplicado -->
+          <!-- Botões de Filtro -->
+          <div id="filter-buttons">
+            <!-- Remove estilo inline -->
+            <span>Filtrar por:</span>
+            <button onclick="filterPosts('todos')" class="active">Todos</button>
+            <button onclick="filterPosts('conto')">Contos</button>
+            <button onclick="filterPosts('poema')">Poemas</button>
+            <!-- Adicione mais botões para outras tags se necessário -->
+          </div>
 
-        <!-- Área onde o conteúdo do post selecionado será carregado -->
+          <!-- Área onde a lista de posts será carregada (continua separada) -->
+          <div id="post-list">
+            <h2>Textos</h2> <!-- Título movido para cá -->
+            <!-- O conteúdo da lista (ou 'Carregando...') será inserido aqui pelo JS -->
+            <p>Carregando textos...</p>
+          </div>
+        </section> <!-- Fim de #textos-section -->
+
+        <!-- Área onde o conteúdo do post selecionado será carregado (fora da seção principal) -->
         <div id="post-content"></div>
       </section>
-
-      <!-- Navegação movida para o header, seção removida -->
     </main>
 
     <footer>
