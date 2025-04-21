@@ -4,29 +4,34 @@ Site pessoal para compartilhar meus textos literários, incluindo contos e poema
 
 ## 📝 Sobre
 
-Este é um projeto pessoal desenvolvido para compartilhar minha escrita criativa. O site foi construído com HTML e CSS, focando em um design moderno e romântico.
+Este é um projeto pessoal desenvolvido para compartilhar minha escrita criativa. O site foi construído com HTML, CSS e JavaScript, focando em um design moderno e romântico.
 
 ## 🛠️ Tecnologias
 
 - HTML5
 - CSS3
-- Google Fonts (Playfair Display)
+- JavaScript (para carregamento dinâmico de posts)
+- Google Fonts (Playfair Display, Lato)
 
 ## 🎨 Design
 
 O site utiliza uma paleta de cores cuidadosamente selecionada:
-- `#40122c` - Roxo escuro
-- `#656273` - Cinza
-- `#59baa9` - Verde-azulado
-- `#d8f171` - Verde claro
-- `#fcffd9` - Creme
+- `#620038` - Roxo escuro (atualizado)
+- `#656273` - Cinza/Lilás
+- `#59baa9` - Verde água
+- `#d8f171` - Verde limão
+- `#fcffd9` - Creme bem claro
 
 ## 📂 Estrutura
 
-- `index.html` - Página inicial com biografia
-- `textos.html` - Página com meus textos literários
+- `index.html` - Página inicial
+- `sobre.html` - Página com a biografia
+- `textos.html` - Página que lista e exibe os textos
+- `textos.js` - Script para carregar e filtrar os textos
+- `posts.json` - Índice dos arquivos de posts
 - `style.css` - Estilos do site
-- `background.png` - Imagem de fundo
+- `posts/` - Pasta contendo os arquivos Markdown dos textos
+- `pachi-parra.jpg` - Foto da autora
 
 ## 👩‍💻 Autora
 

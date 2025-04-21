@@ -1,6 +1,6 @@
 :root {
-    --color1: #620038; /* Roxo escuro */
-    --color2: #656273; /* Cinza/Lilás */
+    --color1: #620038; /* Bordo*/
+    --color2: #656273; /* Cinza */
     --color3: #59baa9; /* Verde água */
     --color4: #d8f171; /* Verde limão */
     --color5: #fcffd9; /* Creme bem claro */
@@ -118,6 +118,7 @@ section {
 .hero-text .button:hover {
     background-color: var(--color1);
     color: white;
+    box-shadow: 0 0 8px var(--color4); /* Adiciona sombra com color4 no hover */
 }
 
 .hero-image {
@@ -213,7 +214,7 @@ header nav ul li a {
 header nav ul li a:hover {
     background-color: transparent;
     color: var(--color2);
-    border-bottom: 2px solid var(--color3); /* Borda inferior no hover */
+    border-bottom: 2px solid var(--color4); /* Borda inferior no hover com color4 */
 }
 
 /* Estilos Categorias */
@@ -353,6 +354,7 @@ footer {
 #filter-buttons button.active,
 #filter-buttons button:hover {
     background-color: var(--color1);
+    box-shadow: 0 0 5px var(--color4); /* Adiciona sombra com color4 no hover */
 }
 
 #post-list ul {
@@ -370,7 +372,7 @@ footer {
 }
 
 #post-list a:hover {
-    color: var(--color3);
+    color: var(--color3); /* Reverte para color3 */
     text-decoration: underline;
     font-weight: bold;
 }
