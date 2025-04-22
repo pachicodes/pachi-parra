@@ -1,4 +1,4 @@
-# Site Pessoal - Patricia Parra
+# Site Pessoal - Pachi Rangel
 
 Site pessoal para compartilhar meus textos literários, incluindo contos e poemas.
 
@@ -31,8 +31,8 @@ O site utiliza uma paleta de cores cuidadosamente selecionada:
 - `posts.json` - Índice dos arquivos de posts
 - `style.css` - Estilos do site
 - `posts/` - Pasta contendo os arquivos Markdown dos textos
-- `pachi-parra.jpg` - Foto da autora
+- `pachi-rangel.jpg` - Foto da autora
 
 ## 👩‍💻 Autora
 
-Patricia Parra - Escritora
+Pachi Rangel - Escritora
